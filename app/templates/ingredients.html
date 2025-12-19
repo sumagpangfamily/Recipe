@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Ingredients</h1>
+    <a href="{{ url_for('add_ingredient') }}">Add Ingredient</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Cost</th>
+                <th>Purchase Date</th>
+                <th>Purchase Location</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ingredient in ingredients %}
+                <tr>
+                    <td>{{ ingredient.name }}</td>
+                    <td>${{ "%.2f"|format(ingredient.cost) }}</td>
+                    <td>{{ ingredient.purchase_date }}</td>
+                    <td>{{ ingredient.purchase_location }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
